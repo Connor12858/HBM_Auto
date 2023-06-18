@@ -1,11 +1,8 @@
-import typing
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import os
 from sys import platform
 
-from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 from pages import *
@@ -17,7 +14,7 @@ loginObj = login.Login(driver)
 
 def menu():
     os.system("cls" if platform == "win32" else "clear")
-    choice = int(input("1. Verbal Memory\n2. Typing (NF)\n3. Chimp Test\n> "))
+    choice = int(input("1. Verbal Memory\n2. Typing\n3. Chimp Test\n4. Number Memory\n> "))
 
     match choice:
         case 1:
@@ -29,6 +26,9 @@ def menu():
         case 3:
             chimp = chimp_test.Chimp(driver)
             chimp.start()
+        case 4:
+            number = number_memory.NumberMemory(driver)
+            number.start()
         case _:
             pass
 
